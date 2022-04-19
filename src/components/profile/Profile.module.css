@@ -1,0 +1,38 @@
+.profile {
+   background: #FD6D75;
+   grid-column: 3/4;
+   /* grid-area: profile; */
+   display: grid;
+   grid-template: auto 1fr / 200px 1fr;
+   grid-template-areas: 'bg bg''icon discr';
+   grid-gap: 10px;
+}
+
+.profile .background {
+   height: 200px;
+   overflow: hidden;
+   grid-area: bg;
+}
+
+.profile .background img {
+   width: 100%;
+}
+
+.profile .icon {
+   /* align-self: center; */
+   /* justify-self: center; */
+   width: 120px;
+   background-attachment: icon;
+}
+
+.profile .icon img {
+   width: 100%;
+   background: linear-gradient(180deg, rgba(72, 254, 178, 0.3) 0%, rgba(16, 210, 255, 0.3) 66%, rgba(0, 119, 200, 0.3) 100%);
+   border-radius: 15px;
+   padding: 5px;
+}
+
+.profile .discription {
+   grid-area: discr;
+   padding: 5px;
+}

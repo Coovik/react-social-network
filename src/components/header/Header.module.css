@@ -1,0 +1,13 @@
+.header{
+   grid-column: 2/4;
+   /* grid-area: header; */
+   background: #836FDD;
+   display: grid;
+   grid-template: 1fr / 1fr 95% 1fr;
+   align-items: center;
+}
+.header .logo {
+   grid-column: 2/3;
+   width: 70px;
+}
+.header .logo img{width: 100%;}
