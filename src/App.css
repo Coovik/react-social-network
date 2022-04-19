@@ -1,38 +1,62 @@
-.App {
-  text-align: center;
+body{
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-wrapper{
+   /* overflow: hidden; */
+   background: #2b2b2b;
+   display: grid;
+   grid-template: minmax(auto, 120px) 1fr / 1fr 300px 900px 1fr;
+   /* grid-template-areas: 'header header' 'sidebar profile'; */
+   grid-gap: 7px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header{
+   grid-column: 2/4;
+   /* grid-area: header; */
+   background: #836FDD;
+   display: grid;
+   grid-template: 1fr / 1fr 95% 1fr;
+   align-items: center;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.header .logo {
+   grid-column: 2/3;
+   width: 70px;
 }
-
-.App-link {
-  color: #61dafb;
+.header .logo img{width: 100%;}
+.sidebar{
+   grid-column: 2/3;
+   /* grid-area: sidebar; */
+   background: #FD6D75;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.profile{
+   background: #FD6D75;
+   grid-column: 3/4;
+   /* grid-area: profile; */
+   display: grid;
+   grid-template: auto 200px 1fr / 200px 1fr;
+   grid-template-areas: 'bg bg' 'icon discr' 'post post';
+   grid-gap: 10px;
+}
+.profile .background{
+   height: 200px;
+   overflow: hidden;
+   grid-area: bg;
+}
+.profile .background img{width: 100%;}
+.profile .icon{
+   /* align-self: center; */
+   /* justify-self: center; */
+   width: 120px;
+   background-attachment: icon;
+}
+.profile .icon img{
+   width: 100%;
+   background: linear-gradient(180deg, rgba(72,254,178,0.3) 0%, rgba(16,210,255,0.3) 66%, rgba(0,119,200,0.3) 100%);
+   border-radius: 15px;
+   padding: 5px;
+}
+.profile .discription{
+   grid-area: discr;
+   padding: 5px;
+}
+.profile .posts{
+   grid-area: post;
 }
