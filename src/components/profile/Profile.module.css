@@ -1,17 +1,16 @@
 .profile {
-   background: #FD6D75;
-   grid-column: 3/4;
    /* grid-area: profile; */
    display: grid;
    grid-template: auto 1fr / 200px 1fr;
-   grid-template-areas: 'bg bg''icon discr';
+   /* grid-template-areas: 'bg bg''icon discr'; */
    grid-gap: 10px;
 }
 
 .profile .background {
    height: 200px;
    overflow: hidden;
-   grid-area: bg;
+   grid-column: span 2;
+   /* grid-area: bg; */
 }
 
 .profile .background img {
@@ -22,7 +21,6 @@
    /* align-self: center; */
    /* justify-self: center; */
    width: 120px;
-   background-attachment: icon;
 }
 
 .profile .icon img {
@@ -33,6 +31,6 @@
 }
 
 .profile .discription {
-   grid-area: discr;
+   /* grid-area: discr; */
    padding: 5px;
 }

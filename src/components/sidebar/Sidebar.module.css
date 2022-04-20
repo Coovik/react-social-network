@@ -1,5 +1,7 @@
-.sidebar{
+.sidebar {
    grid-column: 2/3;
-   /* grid-area: sidebar; */
    background: #FD6D75;
+}
+
+.sidebar ul {
 }

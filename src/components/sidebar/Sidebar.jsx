@@ -4,11 +4,11 @@ function Sidebar() {
    return (
       <div className={cSidebar.sidebar}>
          <ul>
-            <li>Profile</li>
-            <li>Messages</li>
-            <li>News</li>
-            <li>Music</li>
-            <li>Settings</li>
+            <li><a href="Profile">Profile</a></li>
+            <li><a href="Dialogs">Dialogs</a></li>
+            <li><a href="News">News</a></li>
+            <li><a href="Music">Music</a></li>
+            <li><a href="Settings">Settings</a></li>
          </ul>
       </div>
    );
