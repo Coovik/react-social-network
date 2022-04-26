@@ -1,13 +1,16 @@
-.header{
-   grid-column: 2/4;
-   /* grid-area: header; */
-   background: #836FDD;
+.header {
+   background: linear-gradient(90deg, rgb(91, 46, 130) 0%, rgba(143, 61, 205, 1) 50%, rgba(234, 69, 252, 1) 100%);
+   grid-column: span 4;
    display: grid;
    grid-template: 1fr / 1fr 95% 1fr;
    align-items: center;
 }
+
 .header .logo {
    grid-column: 2/3;
    width: 70px;
 }
-.header .logo img{width: 100%;}
+
+.header .logo img {
+   width: 100%;
+}

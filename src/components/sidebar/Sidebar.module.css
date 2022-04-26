@@ -1,7 +1,19 @@
 .sidebar {
-   grid-column: 2/3;
-   background: #FD6D75;
+grid-column: 2/3;
 }
-
-.sidebar ul {
+.sidebar .list {
+   
+}
+.sidebar .list .item  {
+padding: 0px 0px 20px 0px;
+}
+.sidebar .list .item a {
+   padding:  8px ;
+   text-decoration: none;
+   font-size: 25px;
+   color: #cecece;
+   transition: all 0.2s ease 0s;
+}
+.sidebar .list .item a:hover {
+   text-shadow: 0 0 9px rgba(255, 255, 255, 0.6);
 }
