@@ -1,8 +1,8 @@
-import cDialogs from './Dialogs.module.css'
+import c from './Dialogs.module.css'
 
 function Dialogs() {
    return (
-      <div className={cDialogs.dialogs}>
+      <div className={c.dialogs}>
          Dialogs
       </div>
    )

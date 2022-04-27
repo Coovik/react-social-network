@@ -4,10 +4,10 @@ body {
 }
 .app-wrapper {
    display: grid;
-   grid-template: minmax(100px, auto) 1fr / 1fr 10% 85% 1fr;
-   row-gap: 20px;
+   grid-template: minmax(100px, auto) 1fr / 1fr 3fr 20fr 1fr;
+   /* row-gap: 20px; */
 }
 
 .app-content {
-   grid-column: 3/4;
+   grid-column: 3/5;
 }

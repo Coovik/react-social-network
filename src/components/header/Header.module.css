@@ -1,8 +1,8 @@
 .header {
-   background: linear-gradient(90deg, rgb(91, 46, 130) 0%, rgba(143, 61, 205, 1) 50%, rgba(234, 69, 252, 1) 100%);
+   background: linear-gradient(90deg, #472466 0%, #8f3dcd 50%, #ea45fc 100%);
    grid-column: span 4;
    display: grid;
-   grid-template: 1fr / 1fr 95% 1fr;
+   grid-template: 1fr / 1fr 3fr 20fr 1fr;
    align-items: center;
 }
 

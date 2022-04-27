@@ -1,16 +1,18 @@
 .profile {
-   /* grid-area: profile; */
+   color: #ececec;
+}
+
+.block {
    display: grid;
-   grid-template: auto 1fr / 200px 1fr;
-   /* grid-template-areas: 'bg bg''icon discr'; */
+   grid-template: auto 1fr / 1fr 6fr;
    grid-gap: 10px;
 }
 
 .profile .background {
-   height: 200px;
+   height: 180px;
    overflow: hidden;
    grid-column: span 2;
-   /* grid-area: bg; */
+   border-bottom-left-radius: 15px;
 }
 
 .profile .background img {
@@ -18,19 +20,19 @@
 }
 
 .profile .icon {
-   /* align-self: center; */
-   /* justify-self: center; */
-   width: 120px;
+   width: 80%;
+   overflow: hidden;
 }
 
 .profile .icon img {
    width: 100%;
    background: linear-gradient(180deg, rgba(72, 254, 178, 0.3) 0%, rgba(16, 210, 255, 0.3) 66%, rgba(0, 119, 200, 0.3) 100%);
    border-radius: 15px;
-   padding: 5px;
 }
 
 .profile .discription {
-   /* grid-area: discr; */
    padding: 5px;
+}
+.name{
+   font-size: 23px;
 }

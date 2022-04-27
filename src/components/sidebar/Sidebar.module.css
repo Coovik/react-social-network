@@ -1,19 +1,31 @@
 .sidebar {
-grid-column: 2/3;
+   grid-column: 2/3;
 }
+
 .sidebar .list {
-   
+   padding: 20px 0px 0px 0px;
 }
-.sidebar .list .item  {
-padding: 0px 0px 20px 0px;
+
+.sidebar .list .item {
+   padding: 0px 0px 20px 0px;
 }
+
 .sidebar .list .item a {
-   padding:  8px ;
+   padding: 8px;
    text-decoration: none;
    font-size: 25px;
    color: #cecece;
    transition: all 0.2s ease 0s;
 }
+
+.sidebar .list .item a.active {
+   color: #8f3dcd;
+}
+
+.sidebar .list .item a.active:hover {
+   text-shadow: 0 0 9px rgb(143, 61, 205, 0.6);
+}
+
 .sidebar .list .item a:hover {
    text-shadow: 0 0 9px rgba(255, 255, 255, 0.6);
 }
