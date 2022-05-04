@@ -1,4 +1,12 @@
-.post{
-   background: #EF3122;
+.post {
    margin: 15px 5px;
 }
+
+.icon {
+   width: 40px;
+}
+.icon img {
+   width: 100%;
+}
+
+.title {}

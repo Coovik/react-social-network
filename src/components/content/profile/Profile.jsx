@@ -1,7 +1,7 @@
 import Posts from './posts/Posts';
 import c from './Profile.module.css'
 
-function Profile() {
+function Profile(props) {
    return (
       <div className={c.profile}>
          <div className={c.block}>
@@ -23,7 +23,7 @@ function Profile() {
                <div className={c.city}>Moscow</div>
             </div>
          </div>
-         <Posts />
+         <Posts postsName={props.postsName} />
       </div>
    );
 }
