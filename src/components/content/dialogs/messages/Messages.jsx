@@ -2,7 +2,7 @@ import c from './Messages.module.css'
 
 function Messages(props) {
    return (
-      <div className="dialogs">{props.message}</div>
+      <div className="messages">{props.message}</div>
    )
 }
 

@@ -1,21 +1,15 @@
 import c from './Dialogs.module.css'
-import DialogItem from './dialogItem/DialogItem'
 import Messages from './messages/Messages';
-
-
+import { NavLink } from 'react-router-dom';
 
 
 function Dialogs(props) {
-   let tagDialogs = props.dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id} />)
+   let dialogList = props.dialogs.map(dialog => <div className={c.item}><NavLink className={(navData) => navData.isActive ? c.active : ""} to={dialog.id} >{dialog.name}</NavLink></div>)
    let tagMessages = props.messages.map(message => <Messages message={message.message} id={message.id} />)
    return (
       <div className={c.dialogs}>
-         <div className={c.dialogs}>
-            {tagDialogs}
-         </div>
-         <div className={c.messages}>
-            {tagMessages}
-         </div>
+         <div className={c.dialogItem}>{dialogList}</div>
+         <div className={c.messages}>{tagMessages}</div>
       </div>
    )
 }
