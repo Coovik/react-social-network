@@ -19,5 +19,15 @@
    font-size: 20px;
    transition: all 0.2s ease 0s;
 }
+.item a.active {
+   color: #8f3dcd;
+}
+.item a.active:hover {
+   text-shadow: 0 0 9px rgb(143, 61, 205, 0.6);
+}
+
+.item a:hover {
+   text-shadow: 0 0 9px rgba(255, 255, 255, 0.6);
+}
 
 .messages {}
