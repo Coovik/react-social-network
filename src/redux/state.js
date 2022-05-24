@@ -1,3 +1,6 @@
+import { renderTree } from './../render';
+
+
 let data = {
    profilePage: {
       postsName: [
@@ -22,4 +25,11 @@ let data = {
       ]
    },
 };
-export default data;
+
+export let addPost = (messagePost) => {
+   let post = { name: messagePost }
+   data.profilePage.postsName.push(post)
+   renderTree(data)
+}
+
+export default data

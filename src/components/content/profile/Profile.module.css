@@ -6,33 +6,35 @@
    display: grid;
    grid-template: auto 1fr / 1fr 6fr;
    grid-gap: 10px;
+   margin: 0px 0px 20px 0px;
 }
 
-.profile .background {
+.background {
    height: 180px;
    overflow: hidden;
    grid-column: span 2;
    border-bottom-left-radius: 15px;
 }
 
-.profile .background img {
+.background img {
    width: 100%;
 }
 
-.profile .icon {
+.icon {
    width: 80%;
    overflow: hidden;
 }
 
-.profile .icon img {
+.icon img {
    width: 100%;
-   background: linear-gradient(180deg, rgba(72, 254, 178, 0.3) 0%, rgba(16, 210, 255, 0.3) 66%, rgba(0, 119, 200, 0.3) 100%);
-   border-radius: 15px;
+   /* background: linear-gradient(180deg, rgba(72, 254, 178, 0.3) 0%, rgba(16, 210, 255, 0.3) 66%, rgba(0, 119, 200, 0.3) 100%); */
+   /* border-radius: 15px; */
 }
 
 .profile .discription {
    padding: 5px;
 }
-.name{
+
+.name {
    font-size: 23px;
 }

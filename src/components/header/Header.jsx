@@ -5,7 +5,7 @@ function Header() {
    return (
       <div className={cHeader.header}>
          <div className={cHeader.logo}>
-            <NavLink to="/">
+            <NavLink to="/profile">
                <img src="https://cdn-icons-png.flaticon.com/512/7269/7269877.png" alt="logo" />
             </NavLink>
          </div>

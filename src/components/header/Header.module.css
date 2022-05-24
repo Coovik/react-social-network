@@ -6,11 +6,11 @@
    align-items: center;
 }
 
-.header .logo {
+.logo {
    grid-column: 2/3;
    width: 70px;
 }
 
-.header .logo img {
+.logo img {
    width: 100%;
 }

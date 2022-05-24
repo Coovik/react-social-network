@@ -1,3 +1,29 @@
 .posts{
    max-width: 50%;
 }
+.title{
+   font-size: 21px;
+}
+.textareaBlock{
+   display: grid;
+grid-template: 1fr / 2fr 1fr;
+grid-gap: 10px;
+margin: 0px 0px 20px 0px;
+}
+.textarea{
+   border-radius: 15px;
+   resize:none;
+   /* width: 50%; */
+   height: 30px;
+   line-height: 30px;
+   padding-left: 10px;
+   /* background: #000; */
+   /* box-shadow: 0 0 10px rgba(255, 0, 0, 0.3); */
+}
+.button{
+   cursor: pointer;
+   width: 70%;
+   height: 35px;
+   border-radius: 15px;
+   background: #8f3dcd;
+}

@@ -23,7 +23,7 @@ function Profile(props) {
                <div className={c.city}>Moscow</div>
             </div>
          </div>
-         <Posts postsName={props.data.postsName} />
+         <Posts className={c.posts} postsName={props.data.postsName} addPost={props.addPost} />
       </div>
    );
 }
