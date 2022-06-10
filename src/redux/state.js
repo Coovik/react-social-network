@@ -1,4 +1,4 @@
-import { renderTree } from './../render';
+let renderTree = () => { }
 
 
 let data = {
@@ -8,7 +8,8 @@ let data = {
          { name: 'some post 2' },
          { name: 'some post 3' },
          { name: 'some post 4' }
-      ]
+      ],
+      newPostText: ''
    },
    dialogsPage: {
       dialogs: [
@@ -26,10 +27,21 @@ let data = {
    },
 };
 
-export let addPost = (messagePost) => {
-   let post = { name: messagePost }
+
+export const addPost = () => {
+   let post = { name: data.profilePage.newPostText }
    data.profilePage.postsName.push(post)
+   data.profilePage.newPostText = ''
    renderTree(data)
+}
+
+export const updateNewPostText = (newText) => {
+   data.profilePage.newPostText = newText
+   renderTree(data)
+}
+
+export const subscribe = (observer) => {
+   renderTree = observer
 }
 
 export default data
