@@ -7,10 +7,11 @@ function Posts(props) {
    let posts = props.postsName.map(title => <Post title={title.name} />)
    let r = React.createRef()
    let add = () => {
-      props.addPost()
+      props.dispatch({ type: 'ADD-POST' })
    }
    let onPostChange = () => {
-      props.updateNewPostText(r.current.value)
+      let text = r.current.value
+      props.dispatch({ type: 'UPDATE-NEW-POST-TEXT', newText: text })
    }
    return (
       <div className={c.posts}>

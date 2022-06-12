@@ -27,8 +27,7 @@ function Profile(props) {
             className={c.posts}
             postsName={props.data.postsName}
             newPostText={props.data.newPostText}
-            addPost={props.addPost}
-            updateNewPostText={props.updateNewPostText}
+            dispatch={props.dispatch}
          />
       </div>
    );
