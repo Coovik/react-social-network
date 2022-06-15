@@ -1,3 +1,5 @@
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
 let store = {
    _data: {
@@ -36,17 +38,22 @@ let store = {
 
 
    dispatch(action) {
-      if (action.type === 'ADD-POST') {
+      if (action.type === ADD_POST) {
          let post = { name: this._data.profilePage.newPostText }
          this._data.profilePage.postsName.push(post)
          this._data.profilePage.newPostText = ''
          this.renderTree(this._data)
-      } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+      } else if (action.type === UPDATE_NEW_POST_TEXT) {
          this._data.profilePage.newPostText = action.newText
          this.renderTree(this._data)
       }
    }
 
 }
+
+export const addPostActionCreator = () => ({ type: ADD_POST })
+export const updateNewPostTextActionCreator = (text) => (
+   { type: UPDATE_NEW_POST_TEXT, newText: text }
+)
 
 export default store
