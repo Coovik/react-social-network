@@ -32,3 +32,20 @@
 
 .messages {
 }
+.input{}
+.textarea{
+   border-radius: 15px;
+   resize: none;
+   height: 30px;
+   line-height: 30px;
+   padding-left: 10px;
+}
+.button{
+   cursor: pointer;
+   width: 20%;
+   text-align: center;
+   line-height: 30px;
+   height: 35px;
+   border-radius: 15px;
+   background: #8f3dcd;
+}

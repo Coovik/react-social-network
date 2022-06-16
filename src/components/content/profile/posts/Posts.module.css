@@ -13,12 +13,9 @@ margin: 0px 0px 20px 0px;
 .textarea{
    border-radius: 15px;
    resize:none;
-   /* width: 50%; */
    height: 30px;
    line-height: 30px;
    padding-left: 10px;
-   /* background: #000; */
-   /* box-shadow: 0 0 10px rgba(255, 0, 0, 0.3); */
 }
 .button{
    cursor: pointer;

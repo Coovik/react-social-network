@@ -1,5 +1,7 @@
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+import profileReducer from "./profile-reducer"
+import dialogsReducer from './dialogs-reducer';
+import { renderTree } from './../index';
+
 
 let store = {
    _data: {
@@ -25,6 +27,7 @@ let store = {
             { id: '3', message: 'What do you do?' },
             { id: '4', message: 'Bye' },
          ],
+         newText: '',
       },
    },
 
@@ -38,22 +41,12 @@ let store = {
 
 
    dispatch(action) {
-      if (action.type === ADD_POST) {
-         let post = { name: this._data.profilePage.newPostText }
-         this._data.profilePage.postsName.push(post)
-         this._data.profilePage.newPostText = ''
-         this.renderTree(this._data)
-      } else if (action.type === UPDATE_NEW_POST_TEXT) {
-         this._data.profilePage.newPostText = action.newText
-         this.renderTree(this._data)
-      }
+      profileReducer(this._data.profilePage, action)
+      dialogsReducer(this._data.dialogsPage, action)
+      this.renderTree(this._data)
    }
 
 }
 
-export const addPostActionCreator = () => ({ type: ADD_POST })
-export const updateNewPostTextActionCreator = (text) => (
-   { type: UPDATE_NEW_POST_TEXT, newText: text }
-)
 
 export default store
