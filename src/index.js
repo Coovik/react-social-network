@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import store from './redux/state';
+import store from './redux/redux-store';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 
@@ -15,5 +15,7 @@ export let renderTree = (data) => {
    );
 }
 
-renderTree(store.getData())
-store.subscribe(renderTree)
+renderTree(store.getState())
+store.subscribe(() => {
+   renderTree(store.getState())
+})

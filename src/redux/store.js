@@ -1,6 +1,5 @@
 import profileReducer from "./profile-reducer"
 import dialogsReducer from './dialogs-reducer';
-import { renderTree } from './../index';
 
 
 let store = {
@@ -30,20 +29,21 @@ let store = {
          newText: '',
       },
    },
+   _callSubscriber() { },
 
    getData() {
       return this._data
    },
-   renderTree() { },
    subscribe(observer) {
-      this.renderTree = observer
+      this._callSubscriber = observer
    },
 
 
    dispatch(action) {
-      profileReducer(this._data.profilePage, action)
-      dialogsReducer(this._data.dialogsPage, action)
-      this.renderTree(this._data)
+      this._data.profilePage = profileReducer(this._data.profilePage, action)
+      this._data.dialogsPage = dialogsReducer(this._data.dialogsPage, action)
+
+      this._callSubscriber(this._data)
    }
 
 }

@@ -1,8 +1,17 @@
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
+let intialState = {
+   postsName: [
+      { name: 'some post 1' },
+      { name: 'some post 2' },
+      { name: 'some post 3' },
+      { name: 'some post 4' },
+   ],
+   newPostText: '',
+}
 
-const profileReducer = (state, action) => {
+const profileReducer = (state = intialState, action) => {
    switch (action.type) {
       case ADD_POST:
          let post = { name: state.newPostText }
