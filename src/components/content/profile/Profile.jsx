@@ -1,5 +1,5 @@
-import Posts from './posts/Posts';
 import c from './Profile.module.css'
+import PostsContainer from './posts/PostsContainer';
 
 function Profile(props) {
    return (
@@ -23,12 +23,7 @@ function Profile(props) {
                <div className={c.city}>Moscow</div>
             </div>
          </div>
-         <Posts
-            className={c.posts}
-            postsName={props.data.postsName}
-            newPostText={props.data.newPostText}
-            dispatch={props.dispatch}
-         />
+         <PostsContainer />
       </div>
    );
 }
