@@ -12,14 +12,12 @@ let mapStateToProps = (state) => {
 }
 let mapDispatchToProps = (dispatch) => {
    return {
-      send: () => {
+      addMessage: () => {
          dispatch(addMessageActionCreator())
       },
-      onChangeText: (text) => {
+      updateText: (text) => {
          dispatch(updateDialogTextActionCreator(text))
       }
    }
 }
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
-
-export default DialogsContainer
+export default connect(mapStateToProps, mapDispatchToProps)(Dialogs)

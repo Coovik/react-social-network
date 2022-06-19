@@ -7,6 +7,7 @@ import Music from "./components/content/music/Music";
 import Settings from './components/content/settings/Settings';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DialogsContainer from "./components/content/dialogs/DialogsContainer";
+import UsersContainer from "./components/content/users/UsersContainer";
 
 function App(props) {
    return (
@@ -21,11 +22,12 @@ function App(props) {
                   <Route path="/news" element={<News />} />
                   <Route path="/music" element={<Music />} />
                   <Route path="/settings" element={<Settings />} />
+                  <Route path="/users" element={<UsersContainer />} />
                </Routes>
             </div>
          </div >
       </BrowserRouter>
-   );
+   )
 }
 
 export default App;

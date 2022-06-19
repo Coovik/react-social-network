@@ -8,17 +8,10 @@ import { Provider } from 'react-redux';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-export let renderTree = () => {
-   root.render(
-      // <React.StrictMode>
-      // </React.StrictMode >
-      <Provider store={store}>
-         <App />
-      </Provider>
-   );
-}
-
-renderTree()
-store.subscribe(() => {
-   renderTree()
-})
+root.render(
+   // <React.StrictMode>
+   // </React.StrictMode >
+   <Provider store={store}>
+      <App />
+   </Provider>
+);

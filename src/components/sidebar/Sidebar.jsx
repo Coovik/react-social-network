@@ -10,6 +10,7 @@ function Sidebar() {
             <div className={c.item}><NavLink className={(navData) => navData.isActive ? c.active : ""} to="news">News</NavLink></div>
             <div className={c.item}><NavLink className={(navData) => navData.isActive ? c.active : ""} to="music">Music</NavLink></div>
             <div className={c.item}><NavLink className={(navData) => navData.isActive ? c.active : ""} to="settings">Settings</NavLink></div>
+            <div className={c.item}><NavLink className={(navData) => navData.isActive ? c.active : ""} to="users">Users</NavLink></div>
          </div>
       </div>
    );
