@@ -15,14 +15,12 @@ function Profile(props) {
             </div>
             <div className={c.icon}>
                <img
-                  src={defaultPhoto}
+                  src={props.profile.photos.large}
                   alt=""
                />
             </div>
             <div className={c.discription}>
-               <div className={c.name}>Ivan</div>
-               <div className={c.birthdate}>10.2001</div>
-               <div className={c.city}>Moscow</div>
+               <div className={c.name}>{props.profile.fullName}</div>
             </div>
          </div>
          <PostsContainer />

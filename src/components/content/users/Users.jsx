@@ -1,6 +1,7 @@
 import c from './Users.module.css'
 import defaultPhoto from '../../../assets/img/user.png'
 import preloader from '../../../assets/img/preloader.gif'
+import { NavLink } from "react-router-dom"
 
 let Users = (props) => {
    let pages = []
@@ -25,13 +26,16 @@ let Users = (props) => {
       {
          props.users.map(u => {
             return (
-               <div key={u.id} className={c.block}  >
-                  <div className={c.img}>
-                     <img src={u.photos.small !== null ? u.photos.small : defaultPhoto} alt="avatar" />
-                  </div>
-                  {u.followed ?
-                     <button onClick={() => props.unfollow(u.id)} >Unfollow</button> :
-                     <button onClick={() => props.follow(u.id)} >Follow</button>
+               <div key={u.id} className={c.block}>
+                  <NavLink to={'/profile/' + u.id}>
+                     <div className={c.img}>
+                        <img src={u.photos.small !== null ? u.photos.small : defaultPhoto} alt="avatar" />
+                     </div>
+                  </NavLink>
+                  {
+                     u.followed ?
+                        <button onClick={() => props.unfollow(u.id)} >Unfollow</button> :
+                        <button onClick={() => props.follow(u.id)} >Follow</button>
                   }
                   <div className={c.firstColumn}>
                      <div>{u.name}</div>

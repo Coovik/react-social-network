@@ -38,7 +38,7 @@ class UsersClassComponent extends React.Component {
    }
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = state => {
    return {
       users: state.usersPage.users,
       totalCount: state.usersPage.totalCount,
