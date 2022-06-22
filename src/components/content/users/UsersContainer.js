@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 import Users from "./Users"
-import { followAC, setCurrentPageAC, setTotalCountUsersAC, setUsersAC, toggleIsFetchingAC, unfollowAC } from "./../../../redux/users-reducer"
+import { follow, setCurrentPage, setTotalCountUsers, setUsers, toggleIsFetching, unfollow } from "./../../../redux/users-reducer"
 import React from "react"
 import * as axios from 'axios'
 
@@ -11,7 +11,7 @@ class UsersClassComponent extends React.Component {
          .then(response => {
             this.props.toggleIsFetching(false)
             this.props.setUsers(response.data.items)
-            this.props.setTotalCount(response.data.totalCount)
+            this.props.setTotalCountUsers(response.data.totalCount)
 
          })
    }
@@ -47,15 +47,10 @@ let mapStateToProps = (state) => {
       isFetching: state.usersPage.isFetching,
    }
 }
-let mapDispatchToProps = (dispatch) => {
-   return {
-      follow: userId => dispatch(followAC(userId)),
-      unfollow: userId => dispatch(unfollowAC(userId)),
-      setUsers: users => dispatch(setUsersAC(users)),
-      setTotalCount: totalCount => dispatch(setTotalCountUsersAC(totalCount)),
-      setCurrentPage: currentPage => dispatch(setCurrentPageAC(currentPage)),
-      toggleIsFetching: isFetching => dispatch(toggleIsFetchingAC(isFetching)),
-   }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersClassComponent)
+
+export default connect(mapStateToProps,
+   {
+      follow, unfollow, setUsers, setTotalCountUsers, setCurrentPage, toggleIsFetching,
+   }
+)(UsersClassComponent)
