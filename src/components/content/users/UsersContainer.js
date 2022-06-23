@@ -7,7 +7,8 @@ import * as axios from 'axios'
 class UsersClassComponent extends React.Component {
    componentDidMount() {
       this.props.toggleIsFetching(true)
-      axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersOnPage}&page=${this.props.currentPage}`)
+      axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersOnPage}&page=${this.props.currentPage}`,
+         { withCredentials: true })
          .then(response => {
             this.props.toggleIsFetching(false)
             this.props.setUsers(response.data.items)
@@ -18,7 +19,8 @@ class UsersClassComponent extends React.Component {
    onChangePage = pageNumber => {
       this.props.setCurrentPage(pageNumber)
       this.props.toggleIsFetching(true)
-      axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersOnPage}&page=${pageNumber}`)
+      axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersOnPage}&page=${pageNumber}`,
+         { withCredentials: true })
          .then(response => {
             this.props.toggleIsFetching(false)
             this.props.setUsers(response.data.items)
@@ -26,14 +28,10 @@ class UsersClassComponent extends React.Component {
    }
    render = () => {
       return <Users
+         {...this.props}
          onChangePage={this.onChangePage}
-         users={this.props.users}
          unfollow={this.props.unfollow}
          follow={this.props.follow}
-         totalCount={this.props.totalCount}
-         usersOnPage={this.props.usersOnPage}
-         currentPage={this.props.currentPage}
-         isFetching={this.props.isFetching}
       />
    }
 }
