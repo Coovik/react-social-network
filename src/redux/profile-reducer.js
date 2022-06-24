@@ -1,3 +1,5 @@
+import { porofileAPI } from "../api/api"
+
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
@@ -33,10 +35,14 @@ const profileReducer = (state = intialState, action) => {
    }
 }
 
-export const updateNewPostTextActionCreator = (text) => (
-   { type: UPDATE_NEW_POST_TEXT, newText: text }
-)
-export const addPostActionCreator = () => ({ type: ADD_POST })
+// actionCreators
+export const updateNewPostText = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
+export const addPost = () => ({ type: ADD_POST })
 export const setUserProfile = profile => ({ type: SET_USER_PROFILE, profile })
+
+// thunks
+export const getUser = (userId) => {
+   return dispatch => porofileAPI.getUserId(userId).then(data => dispatch(setUserProfile(data)))
+}
 
 export default profileReducer

@@ -1,6 +1,5 @@
 import c from './Header.module.css'
 import { NavLink } from 'react-router-dom';
-
 function Header(props) {
    return (
       <div className={c.header}>
@@ -11,11 +10,11 @@ function Header(props) {
          </div>
          <div className={c.login}>
             {props.isAuth ?
-               <div>{props.login}</div> :
+               <div> {props.login}</div> :
                <NavLink to='/auth'>Login</NavLink>
             }
          </div>
-      </div>
+      </div >
    )
 }
 export default Header

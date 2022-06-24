@@ -9,14 +9,16 @@ const instance = axios.create({
 })
 
 export const usersAPI = {
-   getUsers: (usersOnPage, currentPage) => {
-      return instance.get(`users?count=${usersOnPage}&page=${currentPage}`)
-         .then(response => response.data)
-   },
-   getPage: (usersOnPage = 4, pageNumber = 1) => {
-      return instance.get(`users?count=${usersOnPage}&page=${pageNumber}`)
+   getUsers: (usersOnPage, page) => {
+      return instance.get(`users?count=${usersOnPage}&page=${page}`)
          .then(response => response.data)
    },
    unfollow: (id) => instance.delete(`follow/${id}`).then(response => response.data.resultCode),
    follow: (id) => instance.post(`follow/${id}`).then(response => response.data.resultCode),
+}
+export const headerAPI = {
+   auth: () => instance.get('auth/me').then(response => response.data),
+}
+export const porofileAPI = {
+   getUserId: userId => instance.get(`profile/${userId}`).then(response => response.data)
 }

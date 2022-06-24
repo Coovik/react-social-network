@@ -1,37 +1,17 @@
 import { connect } from "react-redux"
 import Users from "./Users"
-import { follow, setCurrentPage, setTotalCountUsers, setUsers, toggleIsFetching, toggleIsFollowing, unfollow } from "./../../../redux/users-reducer"
+import { follow, getUsers, setCurrentPage, toggleIsFollowing, unfollow } from "./../../../redux/users-reducer"
 import React from "react"
-import { usersAPI } from "./../../../api/api"
 
 class UsersClassComponent extends React.Component {
-   componentDidMount() {
-      this.props.toggleIsFetching(true)
-      usersAPI.getUsers(this.props.usersOnPage, this.props.currentPage)
-         .then(data => {
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(data.items)
-            this.props.setTotalCountUsers(data.totalCount)
+   componentDidMount() { this.props.getUsers(this.props.usersOnPage, this.props.currentPage) }
 
-         })
-   }
    onChangePage = pageNumber => {
       this.props.setCurrentPage(pageNumber)
-      this.props.toggleIsFetching(true)
-      usersAPI.getPage(this.props.usersOnPage, pageNumber)
-         .then(data => {
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(data.items)
-         })
+      this.props.getUsers(this.props.usersOnPage, pageNumber)
    }
    render = () => {
-      return <Users
-         {...this.props}
-         onChangePage={this.onChangePage}
-         unfollow={this.props.unfollow}
-         follow={this.props.follow}
-      // followInProgress={this.props.followInProgress}
-      />
+      return <Users {...this.props} onChangePage={this.onChangePage} />
    }
 }
 
@@ -47,14 +27,11 @@ let mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps,
-   {
-      follow,
-      unfollow,
-      setUsers,
-      setTotalCountUsers,
-      setCurrentPage,
-      toggleIsFetching,
-      toggleIsFollowing,
-   }
+export default connect(mapStateToProps, {
+   follow,
+   unfollow,
+   setCurrentPage,
+   toggleIsFollowing,
+   getUsers,
+}
 )(UsersClassComponent)
