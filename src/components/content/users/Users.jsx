@@ -3,6 +3,8 @@ import defaultPhoto from '../../../assets/img/user.png'
 import preloader from '../../../assets/img/preloader.gif'
 import { NavLink } from "react-router-dom"
 import { usersAPI } from '../../../api/api'
+import { isDisabled } from '@testing-library/user-event/dist/utils'
+import { toggleIsFollowing } from "./../../../redux/users-reducer"
 
 let Users = (props) => {
    let pages = []
@@ -35,12 +37,24 @@ let Users = (props) => {
                   </NavLink>
                   {
                      u.followed ?
-                        <button onClick={() => usersAPI.unfollow(u.id).then(resultCode => {
-                           if (resultCode === 0) props.unfollow(u.id)
-                        })}>Unfollow</button> :
-                        <button onClick={() => usersAPI.follow(u.id).then(resultCode => {
-                           if (resultCode === 0) props.follow(u.id)
-                        })}>Follow</button>
+                        <button disabled={props.followInProgress.some(id => id === u.id)} onClick={() => {
+                           props.toggleIsFollowing(true, u.id)
+                           usersAPI.unfollow(u.id).then(resultCode => {
+                              if (resultCode === 0) {
+                                 props.unfollow(u.id)
+                                 props.toggleIsFollowing(false, u.id)
+                              }
+                           })
+                        }}>Unfollow</button> :
+                        <button disabled={props.followInProgress.some(id => id === u.id)} onClick={() => {
+                           props.toggleIsFollowing(true, u.id)
+                           usersAPI.follow(u.id).then(resultCode => {
+                              if (resultCode === 0) {
+                                 props.follow(u.id)
+                                 props.toggleIsFollowing(false, u.id)
+                              }
+                           })
+                        }}>Follow</button>
                   }
                   <div className={c.firstColumn}>
                      <div>{u.name}</div>
