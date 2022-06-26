@@ -2,6 +2,7 @@ import c from './Profile.module.css'
 import PostsContainer from './posts/PostsContainer';
 import defaultPhoto from '../../../assets/img/user.png'
 import preloader from '../../../assets/img/preloader.gif'
+import Status from "./status/Status"
 
 function Profile(props) {
    if (!props.profile) return <img src={preloader} />
@@ -23,6 +24,7 @@ function Profile(props) {
             </div>
             <div className={c.discription}>
                <div className={c.name}>{props.profile.fullName}</div>
+               <Status status='heyheyhey' />
             </div>
          </div>
          <PostsContainer />
