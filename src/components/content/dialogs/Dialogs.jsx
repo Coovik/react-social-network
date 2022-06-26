@@ -1,6 +1,6 @@
 import c from './Dialogs.module.css'
-import Messages from './messages/Messages';
-import { NavLink } from 'react-router-dom';
+import Messages from './messages/Messages'
+import { Navigate, NavLink } from 'react-router-dom'
 
 
 function Dialogs(props) {
@@ -12,7 +12,7 @@ function Dialogs(props) {
    }
    let onChangeText = (e) => {
       let text = e.target.value
-      props.updateText(text)
+      props.updateDialogText(text)
    }
 
    return (

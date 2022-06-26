@@ -11,7 +11,7 @@ function Header(props) {
          <div className={c.login}>
             {props.isAuth ?
                <div> {props.login}</div> :
-               <NavLink to='/auth'>Login</NavLink>
+               <NavLink to='/login'>Login</NavLink>
             }
          </div>
       </div >
