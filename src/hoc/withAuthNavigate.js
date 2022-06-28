@@ -9,7 +9,5 @@ export const withAuthNavigate = (Componet) => {
       return <Componet {...props} />
    }
 
-   let ConnectAuthNavigateComponent = connect(mapStateToPropsNavigate)(NavigateComponent)
-
-   return ConnectAuthNavigateComponent
+   return connect(mapStateToPropsNavigate)(NavigateComponent)
 }

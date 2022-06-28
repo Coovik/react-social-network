@@ -3,6 +3,7 @@ import { porofileAPI } from "../api/api"
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
+const SET_STATUS = 'SET_STATUS'
 
 let intialState = {
    postsName: [
@@ -13,6 +14,7 @@ let intialState = {
    ],
    newPostText: '',
    profile: null,
+   status: '',
 }
 
 const profileReducer = (state = intialState, action) => {
@@ -30,19 +32,30 @@ const profileReducer = (state = intialState, action) => {
          }
       case SET_USER_PROFILE:
          return { ...state, profile: action.profile }
+      case SET_STATUS:
+         return { ...state, status: action.status }
       default:
          return state
    }
 }
 
 // actionCreators
-export const updateNewPostText = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
+export const updateNewPostText = text => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
 export const addPost = () => ({ type: ADD_POST })
 export const setUserProfile = profile => ({ type: SET_USER_PROFILE, profile })
+export const setStatus = status => ({ type: SET_STATUS, status })
 
 // thunks
-export const getUser = (userId) => {
-   return dispatch => porofileAPI.getUserId(userId).then(data => dispatch(setUserProfile(data)))
+export const getUser = userId => {
+   return dispatch => porofileAPI.getProfile(userId).then(data => dispatch(setUserProfile(data)))
+}
+export const getStatus = userId => {
+   return dispatch => porofileAPI.getStatus(userId).then(data => dispatch(setStatus(data)))
+}
+export const updateStatus = status => {
+   return dispatch => porofileAPI.updateStatus(status).then(response => {
+      if (response === 0) dispatch(setStatus(status))
+   })
 }
 
 export default profileReducer

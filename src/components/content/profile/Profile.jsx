@@ -24,7 +24,7 @@ function Profile(props) {
             </div>
             <div className={c.discription}>
                <div className={c.name}>{props.profile.fullName}</div>
-               <Status status='heyheyhey' />
+               <Status status={props.status} updateStatus={props.updateStatus} />
             </div>
          </div>
          <PostsContainer />
