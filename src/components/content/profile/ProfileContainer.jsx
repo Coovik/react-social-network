@@ -43,5 +43,5 @@ function withRouter(Component) {
 export default compose(
    withRouter,
    connect(mapStateToProps, { getUser, getStatus, updateStatus }),
-   withAuthNavigate,
+   // withAuthNavigate,
 )(ProfileContainer)

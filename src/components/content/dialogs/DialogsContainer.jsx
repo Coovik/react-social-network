@@ -12,7 +12,7 @@ let mapStateToProps = (state) => ({
 })
 
 export default compose(
-   withAuthNavigate,
+   // withAuthNavigate,
    connect(mapStateToProps, { updateDialogText, addMessage })
 )(Dialogs)
 
