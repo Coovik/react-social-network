@@ -1,26 +1,34 @@
 import c from './Posts.module.css'
 import Post from './post/Post';
 import React from 'react';
+import { Field, reduxForm } from 'redux-form';
 
+
+const CreatePostForm = props => <form className={c.textareaBlock} onSubmit={props.handleSubmit}>
+   <Field
+      className={c.textarea}
+      name='textPost'
+      placeholder='add text'
+      component='textarea'
+   />
+   <button className={c.button} >Add</button>
+</form>
+const ReduxFormCreatePost = reduxForm({ form: 'createPost' })(CreatePostForm)
 
 function Posts(props) {
    let posts = props.postsName.map(title => <Post title={title.name} />)
-   let r = React.createRef()
-   let onPostChange = () => {
-      let text = r.current.value
-      props.updateNewPostText(text)
-   }
-   let add = () => {
-      props.addPost()
-   }
+
+   let addPost = values => props.addPost(values.textPost)
+
    return (
       <div className={c.posts}>
          <div className={c.createPost}>
             <div className={c.title}>Create Post</div>
-            <div className={c.textareaBlock}>
+            {/* <form className={c.textareaBlock}>
                <textarea ref={r} className={c.textarea} placeholder='add text' onChange={onPostChange} value={props.newPostText} />
                <button className={c.button} onClick={add} >Add</button>
-            </div>
+            </form> */}
+            <ReduxFormCreatePost onSubmit={addPost} />
          </div>
          {posts}
       </div >
