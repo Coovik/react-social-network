@@ -1,11 +1,11 @@
 import c from './Profile.module.css'
 import PostsContainer from './posts/PostsContainer';
 import defaultPhoto from '../../../assets/img/user.png'
-import preloader from '../../../assets/img/preloader.gif'
 import Status from "./status/Status"
+import { Preloader } from '../../common/preloader/Preloader';
 
 function Profile(props) {
-   if (!props.profile) return <img src={preloader} />
+   if (!props.profile) return <Preloader />
 
    return (
       <div className={c.profile}>

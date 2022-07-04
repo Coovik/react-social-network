@@ -1,7 +1,7 @@
 import c from './Users.module.css'
 import defaultPhoto from '../../../assets/img/user.png'
-import preloader from '../../../assets/img/preloader.gif'
 import { NavLink } from "react-router-dom"
+import { Preloader } from '../../common/preloader/Preloader'
 
 let Users = (props) => {
    let pages = []
@@ -12,7 +12,7 @@ let Users = (props) => {
    return <>
       <div className={c.preloader}>
          {props.isFetching &&
-            <img src={preloader} />
+            <Preloader />
          }
       </div >
       <div className={c.pages}>

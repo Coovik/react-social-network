@@ -3,7 +3,6 @@ import Messages from './messages/Messages'
 import { NavLink } from 'react-router-dom'
 import { Field, reduxForm } from 'redux-form'
 
-
 const MessagesForm = props => <form className={c.input} onSubmit={props.handleSubmit}>
    <div>
       <Field
