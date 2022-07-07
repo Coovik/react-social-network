@@ -31,15 +31,6 @@ function Dialogs(props) {
          </div>
          <div className={c.messages}>
             {tagMessages}
-            {/* <div className={c.input}>
-               <textarea
-                  className={c.textarea}
-                  placeholder='add text'
-                  onChange={onChangeText}
-                  value={props.newText}
-               />
-               <div className={c.button} onClick={send}>send</div>
-            </div> */}
             <ReduxFormMessage onSubmit={addMessage} />
          </div>
       </div>

@@ -24,10 +24,6 @@ function Posts(props) {
       <div className={c.posts}>
          <div className={c.createPost}>
             <div className={c.title}>Create Post</div>
-            {/* <form className={c.textareaBlock}>
-               <textarea ref={r} className={c.textarea} placeholder='add text' onChange={onPostChange} value={props.newPostText} />
-               <button className={c.button} onClick={add} >Add</button>
-            </form> */}
             <ReduxFormCreatePost onSubmit={addPost} />
          </div>
          {posts}
