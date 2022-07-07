@@ -3,14 +3,14 @@ import Sidebar from "./components/sidebar/Sidebar";
 import News from './components/content/news/News';
 import Music from "./components/content/music/Music";
 import Settings from './components/content/settings/Settings';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, } from "react-router-dom";
 import DialogsContainer from "./components/content/dialogs/DialogsContainer";
 import UsersContainer from "./components/content/users/UsersContainer";
 import ProfileContainer from "./components/content/profile/ProfileContainer";
 import HeaderContainer from "./components/header/HeaderContainer"
 import Login from "./components/login/Login"
 
-function App(props) {
+const App = props => {
    return (
       <BrowserRouter>
          <div className='app-wrapper'>
@@ -33,4 +33,5 @@ function App(props) {
    )
 }
 
-export default App;
+
+export default App
