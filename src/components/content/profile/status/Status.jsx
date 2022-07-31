@@ -16,7 +16,6 @@ const Status = props => {
    }, [props.status])
 
    const onChangeStatus = e => setStatus(e.currentTarget.value)
-
    return <>
       <div>status:</div>
       {!editMode &&

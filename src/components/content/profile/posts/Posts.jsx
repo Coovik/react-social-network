@@ -16,6 +16,7 @@ const CreatePostForm = props => <form className={c.textareaBlock} onSubmit={prop
 const ReduxFormCreatePost = reduxForm({ form: 'createPost' })(CreatePostForm)
 
 function Posts(props) {
+
    let posts = props.postsName.map(title => <Post title={title.name} />)
 
    let addPost = values => props.addPost(values.textPost)
