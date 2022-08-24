@@ -3,7 +3,7 @@ import Sidebar from "./components/sidebar/Sidebar";
 import News from './components/content/news/News';
 import Music from "./components/content/music/Music";
 import Settings from './components/content/settings/Settings';
-import { BrowserRouter, Route, Routes, } from "react-router-dom";
+import { HashRouter, Route, Routes, } from "react-router-dom";
 import ProfileContainer from "./components/content/profile/ProfileContainer";
 import HeaderContainer from "./components/header/HeaderContainer"
 import Login from "./components/login/Login"
@@ -15,7 +15,7 @@ const UsersContainer = React.lazy(() => import("./components/content/users/Users
 
 const App = props => {
    return (
-      <BrowserRouter>
+      <HashRouter>
          <div className='app-wrapper'>
             <HeaderContainer />
             <Sidebar />
@@ -34,7 +34,7 @@ const App = props => {
                </Suspense>
             </div>
          </div >
-      </BrowserRouter>
+      </HashRouter>
    )
 }
 

@@ -34,7 +34,12 @@ const LoginRedaxForm = reduxForm({ form: 'login' })(LoginForm)
 const Login = props => {
    const onSubmit = formData => props.login(formData.email, formData.password, formData.rememberMe)
    if (props.isAuth) return <Navigate to='/profile' />
-   return <LoginRedaxForm onSubmit={onSubmit} />
+   return <>
+      <h1>Enter this data</h1>
+      <div>Email: free@samuraijs.com</div>
+      <div>Password: free</div>
+      <LoginRedaxForm onSubmit={onSubmit} />
+   </>
 }
 
 const mapStateToProps = state => ({
