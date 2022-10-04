@@ -7,6 +7,12 @@ import { Preloader } from '../../common/preloader/Preloader';
 function Profile(props) {
    if (!props.profile) return <Preloader />
 
+   const selectPhoto = e => {
+      if (e.target.files.length) {
+         props.setPhoto(e.target.files[0])
+      }
+   }
+
    return (
       <div className={c.profile}>
          <div className={c.block}>
@@ -21,6 +27,7 @@ function Profile(props) {
                   src={props.profile.photos.large ? props.profile.photos.large : defaultPhoto}
                   alt=""
                />
+               {props.userId == props.profile.userId && <input type={'file'} onChange={selectPhoto} />}
             </div>
             <div className={c.discription}>
                <div className={c.name}>{props.profile.fullName}</div>

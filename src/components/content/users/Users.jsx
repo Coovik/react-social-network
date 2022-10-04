@@ -14,11 +14,11 @@ let Users = (props) => {
          {props.isFetching &&
             <Preloader />
          }
-      </div >
+      </div>
       <div className={c.pages}>
          {pages.map(p => {
             return (
-               <span className={props.currentPage === p ? c.selectedPage : null}
+               <span key={p} className={props.currentPage === p ? c.selectedPage : null}
                   onClick={() => props.onChangePage(p)}>{p}</span>
             )
          })}
@@ -43,11 +43,11 @@ let Users = (props) => {
                      <div>{u.name}</div>
                      <div>{u.status}</div>
                   </div>
-               </div >
+               </div>
             )
          })
       }
-   </ >
+   </>
 }
 
 export default Users

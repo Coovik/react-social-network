@@ -17,7 +17,7 @@ const ReduxFormCreatePost = reduxForm({ form: 'createPost' })(CreatePostForm)
 
 function Posts(props) {
 
-   let posts = props.postsName.map(title => <Post title={title.name} />)
+   let posts = props.postsName.map(p => <Post key={p.id} title={p.name} />)
 
    let addPost = values => props.addPost(values.textPost)
 

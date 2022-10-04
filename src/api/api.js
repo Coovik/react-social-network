@@ -23,9 +23,16 @@ export const authAPI = {
    },
    logout: () => instance.delete('auth/login'),
 }
-export const porofileAPI = {
+export const profileAPI = {
    getProfile: userId => instance.get(`profile/${userId}`).then(response => response.data),
    getStatus: userId => instance.get(`profile/status/${userId}`).then(response => response.data),
    updateStatus: status => instance.put(`profile/status`, { status })
       .then(response => response.data.resultCode),
+   updateAvatar: photo => {
+      const fd = new FormData()
+      fd.append('image', photo)
+      return instance.put(`profile/photo`, fd,
+         { headers: { 'Content-Type': 'multipart/form-data' } }
+      )
+   },
 }
