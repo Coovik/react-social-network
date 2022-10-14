@@ -1,4 +1,4 @@
-import cApp from "./App.css";
+import  "./App.css";
 import Sidebar from "./components/sidebar/Sidebar";
 import News from './components/content/news/News';
 import Music from "./components/content/music/Music";
@@ -13,7 +13,7 @@ import { Preloader } from "./components/common/preloader/Preloader";
 const DialogsContainer = React.lazy(() => import("./components/content/dialogs/DialogsContainer"))
 const UsersContainer = React.lazy(() => import("./components/content/users/UsersContainer"))
 
-const App = props => {
+const App = () => {
    return (
       <HashRouter>
          <div className='app-wrapper'>
