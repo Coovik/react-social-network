@@ -9,24 +9,24 @@ const instance = axios.create({
 })
 
 export const usersAPI = {
-   getUsers: (usersOnPage, page) => instance.get(`users?count=${usersOnPage}&page=${page}`)
+   getUsers: (usersOnPage: number, page: number) => instance.get(`users?count=${usersOnPage}&page=${page}`)
       .then(response => response.data),
-   unfollow: id => instance.delete(`follow/${id}`).then(response => response.data.resultCode),
-   follow: id => instance.post(`follow/${id}`).then(response => response.data.resultCode),
+   unfollow: (id: number) => instance.delete(`follow/${id}`).then(response => response.data.resultCode),
+   follow: (id: number) => instance.post(`follow/${id}`).then(response => response.data.resultCode),
 }
 export const authAPI = {
    me: () => instance.get('auth/me').then(response => response.data),
-   login: (email, password, rememberMe = false) => {
+   login: (email: string, password: string, rememberMe = false) => {
       return instance.post('auth/login', { email, password, rememberMe })
    },
    logout: () => instance.delete('auth/login'),
 }
 export const profileAPI = {
-   getProfile: userId => instance.get(`profile/${userId}`).then(response => response.data),
-   getStatus: userId => instance.get(`profile/status/${userId}`).then(response => response.data),
-   updateStatus: status => instance.put(`profile/status`, { status })
+   getProfile: (userId: number) => instance.get(`profile/${userId}`).then(response => response.data),
+   getStatus: (userId: number) => instance.get(`profile/status/${userId}`).then(response => response.data),
+   updateStatus: (status: string) => instance.put(`profile/status`, { status })
       .then(response => response.data.resultCode),
-   updateAvatar: photo => {
+   updateAvatar: (photo: any) => {
       const fd = new FormData()
       fd.append('image', photo)
       return instance.put(`profile/photo`, fd,
