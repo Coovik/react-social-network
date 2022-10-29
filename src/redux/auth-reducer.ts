@@ -1,7 +1,7 @@
 import { stopSubmit } from 'redux-form'
 import { ThunkAction } from 'redux-thunk'
 import { authAPI } from '../api/api'
-import { AppStateType, InferType } from './redux-store'
+import { AppStateType, InferValueTypes } from './redux-store'
 
 
 let initialState = {
@@ -29,7 +29,7 @@ const actions = {
    setAuthUserData: (id: number, email: string, login: string, isAuth: boolean,) => (
       { type: 'AUTH-REDUCER/SET_USER_DATA', payload: { id, email, login, isAuth } } as const),
 }
-type Actions = ReturnType<InferType<typeof actions>>
+type Actions = ReturnType<InferValueTypes<typeof actions>>
 
 // thunks
 type Thunk = ThunkAction<Promise<void>, AppStateType, unknown, Actions>

@@ -15,7 +15,7 @@ let rootReducer = combineReducers({
 })
 type ReducerType = typeof rootReducer
 export type AppStateType = ReturnType<ReducerType>
-export type InferType<T> = T extends { [key: string]: infer U } ? U : never
+export type InferValueTypes<T> = T extends { [key: string]: infer U } ? U : never
 
 
 let store = createStore(rootReducer, applyMiddleware(thunkMiddleware))

@@ -1,14 +1,14 @@
+import React, { Suspense } from 'react'
+import { HashRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import Sidebar from './components/sidebar/Sidebar'
-import News from './components/content/news/News'
+import { Preloader } from './components/common/preloader/Preloader'
 import Music from './components/content/music/Music'
-import Settings from './components/content/settings/Settings'
-import { HashRouter, Route, Routes, } from 'react-router-dom'
+import News from './components/content/news/News'
 import ProfileContainer from './components/content/profile/ProfileContainer'
+import Settings from './components/content/settings/Settings'
 import HeaderContainer from './components/header/HeaderContainer'
 import Login from './components/login/Login'
-import React, { Suspense } from 'react'
-import { Preloader } from './components/common/preloader/Preloader'
+import Sidebar from './components/sidebar/Sidebar'
 
 const DialogsContainer = React.lazy(() => import('./components/content/dialogs/DialogsContainer'))
 const UsersContainer = React.lazy(() => import('./components/content/users/UsersContainer'))
@@ -24,8 +24,8 @@ const App = () => {
                   <Routes>
                      <Route path='/dialogs/*' element={<DialogsContainer />} />
                      <Route path='/users' element={<UsersContainer />} />
-                     <Route path='/profile/:id' element={<ProfileContainer />} />
                      <Route path='/profile' element={<ProfileContainer />} />
+                     <Route path='/profile/:id' element={<ProfileContainer />} />
                      <Route path='/login' element={<Login />} />
                      <Route path='/news' element={<News />} />
                      <Route path='/music' element={<Music />} />

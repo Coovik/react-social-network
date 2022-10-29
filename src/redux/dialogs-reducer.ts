@@ -1,4 +1,4 @@
-import { InferType } from "./redux-store"
+import { InferValueTypes } from "./redux-store"
 
 let intialState = {
    dialogs: [
@@ -33,6 +33,6 @@ const actions = {
    addMessage: (newMessageBody: string) => (
       { type: 'DIALOGS-REDUCER/ADD_MESSAGE', newMessageBody } as const),
 }
-type Actions = ReturnType<InferType<typeof actions>>
+type Actions = ReturnType<InferValueTypes<typeof actions>>
 
 export default dialogsReducer

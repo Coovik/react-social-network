@@ -22,8 +22,8 @@ export const authAPI = {
    logout: () => instance.delete('auth/login'),
 }
 export const profileAPI = {
-   getProfile: (userId: number) => instance.get(`profile/${userId}`).then(response => response.data),
-   getStatus: (userId: number) => instance.get(`profile/status/${userId}`).then(response => response.data),
+   getProfile: (userId: string) => instance.get(`profile/${userId}`).then(response => response.data),
+   getStatus: (userId: string) => instance.get(`profile/status/${userId}`).then(response => response.data),
    updateStatus: (status: string) => instance.put(`profile/status`, { status })
       .then(response => response.data.resultCode),
    updateAvatar: (photo: any) => {

@@ -1,6 +1,6 @@
 import { usersAPI } from "../api/api"
 import { ThunkAction } from 'redux-thunk'
-import { AppStateType, InferType } from "./redux-store"
+import { AppStateType, InferValueTypes } from "./redux-store"
 
 let intialState = {
    users: [] as any,
@@ -68,7 +68,7 @@ const actions = {
    toggleIsFollowing: (followInProgress: boolean, userId: number) => (
       { type: 'USERS-REDUCER/TOGGLE_IS_FOLLOWING', followInProgress, userId } as const),
 }
-type Actions = ReturnType<InferType<typeof actions>>
+type Actions = ReturnType<InferValueTypes<typeof actions>>
 
 // thunks
 type Thunk = ThunkAction<void, AppStateType, unknown, Actions>

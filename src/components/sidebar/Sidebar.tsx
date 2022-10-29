@@ -1,7 +1,8 @@
-import { NavLink } from 'react-router-dom';
+import React from 'react'
+import { NavLink } from 'react-router-dom'
 import c from './Sidebar.module.css'
 
-function Sidebar() {
+const Sidebar = () => {
    return (
       <div className={c.sidebar}>
          <div className={c.list}>
@@ -13,6 +14,6 @@ function Sidebar() {
             <div className={c.item}><NavLink className={({ isActive }) => (isActive ? c.active : "")} to="users">Users</NavLink></div>
          </div>
       </div>
-   );
+   )
 }
-export default Sidebar;
+export default Sidebar

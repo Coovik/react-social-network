@@ -1,6 +1,7 @@
 import cSettings from './Settings.module.css'
+import React from 'react'
 
-function Settings() {
+const Settings = () => {
    return (
       <div className={cSettings.settings}>
          Settings

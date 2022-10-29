@@ -1,6 +1,7 @@
+import React from 'react'
 import cNews from './News.module.css'
 
-function News() {
+const News = () => {
    return (
       <div className={cNews.news}>
          News

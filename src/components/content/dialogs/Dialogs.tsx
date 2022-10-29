@@ -1,9 +1,10 @@
-import c from './Dialogs.module.css'
-import Messages from './messages/Messages'
+import React, { FC } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Field, reduxForm } from 'redux-form'
+import c from './Dialogs.module.css'
+import Messages from './messages/Messages'
 
-const MessagesForm = props => <form className={c.input} onSubmit={props.handleSubmit}>
+const MessagesForm = (props) => <form className={c.input} onSubmit={props.handleSubmit}>
    <div>
       <Field
          className={c.textarea}
@@ -19,8 +20,16 @@ const MessagesForm = props => <form className={c.input} onSubmit={props.handleSu
 const ReduxFormMessage = reduxForm({ form: 'message' })(MessagesForm)
 
 function Dialogs(props) {
-   let dialogList = props.dialogs.map(dialog => <div className={c.item}><NavLink className={navData => navData.isActive ? c.active : ""} to={`/dialogs/${dialog.id}`} >{dialog.name}</NavLink></div>)
-   let tagMessages = props.messages.map(message => <Messages message={message.message} id={message.id} />)
+   let dialogList = props.dialogs
+      .map(dialog => <div className={c.item}>
+         <NavLink
+            className={navData => navData.isActive ? c.active : ""}
+            to={`/dialogs/${dialog.id}`} >{dialog.name}
+         </NavLink>
+      </div>
+      )
+   let tagMessages = props.messages
+      .map(message => <Messages message={message.message} id={message.id} />)
 
    const addMessage = values => props.addMessage(values.newMessageBody)
 
