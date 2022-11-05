@@ -11,7 +11,6 @@ let intialState = {
    ],
    profile: {} as Tprofile,
    status: '',
-   newPostText: '',
 }
 export type Tpost = { id: number, name: string }
 export type Tprofile = {
@@ -22,6 +21,7 @@ export type Tprofile = {
       small: string
       large: string
    }
+   followed: boolean
 }
 type InitialStateType = typeof intialState
 
@@ -31,7 +31,6 @@ const profileReducer = (state = intialState, action: Actions): InitialStateType 
          return {
             ...state,
             postsName: [...state.postsName, { id: state.postsName.length + 1, name: action.textPost }],
-            newPostText: '',
          }
       case 'PROFILE-REDUCER/DELETE_POST':
          return { ...state, postsName: state.postsName.filter((p, i) => i != action.id) }

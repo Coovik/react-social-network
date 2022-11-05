@@ -17,7 +17,6 @@ type Tprops = {
 const Profile: FC<Tprops> = (props) => {
    if (!props.profile) return <Preloader />
 
-   // const selectPhoto = (e: UIEvent & { target: HTMLInputElement & { files: string[] } }) => {
    const selectPhoto = (e: ChangeEvent<HTMLInputElement>) => {
       if (e.target.files?.length) {
          props.setPhoto(e.target.files[0])

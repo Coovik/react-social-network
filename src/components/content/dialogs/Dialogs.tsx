@@ -1,29 +1,20 @@
-import React, { FC } from 'react'
+import { Field, Form, Formik, FormikValues } from 'formik'
+import { FC } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Field, reduxForm } from 'redux-form'
 import c from './Dialogs.module.css'
 import Messages from './messages/Messages'
 
-const MessagesForm = (props) => <form className={c.input} onSubmit={props.handleSubmit}>
-   <div>
-      <Field
-         className={c.textarea}
-         name='newMessageBody'
-         placeholder='add text'
-         component='textarea'
-      />
-   </div>
-   <div>
-      <button className={c.button} >send</button>
-   </div>
-</form>
-const ReduxFormMessage = reduxForm({ form: 'message' })(MessagesForm)
 
-function Dialogs(props) {
+type Tprops = {
+   dialogs: { id: number, name: string }[]
+   messages: { id: number, message: string }[]
+   addMessage: (text: string) => void
+}
+const Dialogs: FC<Tprops> = props => {
    let dialogList = props.dialogs
       .map(dialog => <div className={c.item}>
          <NavLink
-            className={navData => navData.isActive ? c.active : ""}
+            className={navData => navData.isActive ? c.active : ''}
             to={`/dialogs/${dialog.id}`} >{dialog.name}
          </NavLink>
       </div>
@@ -31,7 +22,7 @@ function Dialogs(props) {
    let tagMessages = props.messages
       .map(message => <Messages message={message.message} id={message.id} />)
 
-   const addMessage = values => props.addMessage(values.newMessageBody)
+   const addMessage = (values: FormikValues) => props.addMessage(values.newMessage)
 
    return (
       <div className={c.dialogs}>
@@ -40,7 +31,14 @@ function Dialogs(props) {
          </div>
          <div className={c.messages}>
             {tagMessages}
-            <ReduxFormMessage onSubmit={addMessage} />
+            <Formik
+               initialValues={{ newMessage: '' }}
+               onSubmit={addMessage}
+            >
+               <Form>
+                  <Field name='newMessage' placeholder='add text' type='textarea' />
+               </Form>
+            </Formik>
          </div>
       </div>
    )

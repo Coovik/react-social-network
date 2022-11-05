@@ -1,7 +1,7 @@
 import c from './Posts.module.css'
 import Post from './post/Post'
-import React from 'react'
-import { Field, Form, Formik } from 'formik'
+import React, { FC } from 'react'
+import { Field, Form, Formik, FormikValues } from 'formik'
 import { Tpost } from '../../../../redux/profile-reducer'
 
 type Tprops = {
@@ -10,17 +10,15 @@ type Tprops = {
       addPost: (value: string) => void
    }
 }
-type TformValues = { postInput: string }
-const Posts = (props: Tprops) => {
+export const Posts: FC<Tprops> = props => {
    const posts = props.postsName.map(p => <Post key={p.id} title={p.name} />)
-   const addPost = (value: string) => props.actions.addPost(value)
-   const initialValues: TformValues = { postInput: '' }
+   const addPost = (values: FormikValues) => props.actions.addPost(values.postInput)
 
    return (
       <div className={c.posts}>
-         {/* <div className={c.createPost}>
+         <div className={c.createPost}>
             <div className={c.title}>Create Post</div>
-            <Formik initialValues={initialValues} onSubmit={addPost}>
+            <Formik initialValues={{ postInput: '' }} onSubmit={addPost}>
                <Form className={c.textareaBlock}>
                   <div>
                      <Field id='postInput' name='postInput' className={c.textarea} placeholder='add text' />
@@ -28,9 +26,8 @@ const Posts = (props: Tprops) => {
                   <button className={c.button}>Add</button>
                </Form>
             </Formik>
-         </div> */}
+         </div>
          {posts}
       </div >
    )
 }
-export default Posts

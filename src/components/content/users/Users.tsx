@@ -1,12 +1,27 @@
-import c from './Users.module.css'
+import { FC } from 'react'
+import { NavLink } from 'react-router-dom'
 import defaultPhoto from '../../../assets/img/user.png'
-import { NavLink } from "react-router-dom"
+import { Tprofile } from '../../../redux/profile-reducer'
 import { Preloader } from '../../common/preloader/Preloader'
+import c from './Users.module.css'
 
-let Users = (props) => {
+type Tprops = {
+   totalCount: number
+   usersOnPage: number
+   isFetching: boolean
+   currentPage: number
+   users: Tprofile[]
+   followInProgress: string[]
+
+   unfollow: (id: string) => void
+   follow: (id: string) => void
+   onChangePage: (pageNumber: number) => void
+
+}
+const Users: FC<Tprops> = props => {
    let pages = []
    let total = Math.ceil(props.totalCount / props.usersOnPage / 100)
-   for (let i = 1; i <= total; i++) {
+   for (let i = 1;i <= total;i++) {
       pages.push(i)
    }
    return <>
@@ -29,7 +44,7 @@ let Users = (props) => {
                <div key={u.id} className={c.block}>
                   <NavLink to={'/profile/' + u.id}>
                      <div className={c.img}>
-                        <img src={u.photos.small !== null ? u.photos.small : defaultPhoto} alt="avatarka" />
+                        <img src={u.photos.small !== null ? u.photos.small : defaultPhoto} alt='avatarka' />
                      </div>
                   </NavLink>
                   {

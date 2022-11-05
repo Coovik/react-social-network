@@ -1,21 +1,36 @@
-import { connect } from "react-redux"
-import Users from "./Users"
-import { follow, getUsers, setCurrentPage, toggleIsFollowing, unfollow } from "./../../../redux/users-reducer"
-import React from "react"
+import { connect } from 'react-redux'
+import Users from './Users'
+import { actions, follow, getUsers, unfollow } from './../../../redux/users-reducer'
+import { useEffect, FC } from 'react'
+import { AppStateType } from '../../../redux/redux-store'
+import { Tprofile } from '../../../redux/profile-reducer'
 
-class UsersClassComponent extends React.Component {
-   componentDidMount() { this.props.getUsers(this.props.usersOnPage, this.props.currentPage) }
+type Tprops = {
+   usersOnPage: number
+   currentPage: number
+   totalCount: number
+   isFetching: boolean
+   users: Tprofile[]
+   followInProgress: string[]
 
-   onChangePage = pageNumber => {
-      this.props.setCurrentPage(pageNumber)
-      this.props.getUsers(this.props.usersOnPage, pageNumber)
+   actions: {
+      setCurrentPage: (currentPage: number) => void
    }
-   render = () => {
-      return <Users {...this.props} onChangePage={this.onChangePage} />
+   getUsers: (usersOnPage: number, page: number) => void
+   unfollow: (id: string) => void
+   follow: (id: string) => void
+}
+const UsersComponent: FC<Tprops> = props => {
+   useEffect(() => props.getUsers(props.usersOnPage, props.currentPage), [])
+
+   const onChangePage = (pageNumber: number) => {
+      props.actions.setCurrentPage(pageNumber)
+      props.getUsers(props.usersOnPage, pageNumber)
    }
+   return <Users {...props} onChangePage={onChangePage} />
 }
 
-let mapStateToProps = state => {
+let mapStateToProps = (state: AppStateType) => {
    return {
       users: state.usersPage.users,
       totalCount: state.usersPage.totalCount,
@@ -26,12 +41,10 @@ let mapStateToProps = state => {
    }
 }
 
-
 export default connect(mapStateToProps, {
    follow,
    unfollow,
-   setCurrentPage,
-   toggleIsFollowing,
    getUsers,
+   actions,
 }
-)(UsersClassComponent)
+)(UsersComponent)

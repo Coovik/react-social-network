@@ -1,9 +1,10 @@
 import { usersAPI } from "../api/api"
 import { ThunkAction } from 'redux-thunk'
 import { AppStateType, InferValueTypes } from "./redux-store"
+import { Tprofile } from "./profile-reducer"
 
 let intialState = {
-   users: [] as any,
+   users: {} as Tprofile[],
    totalCount: 0,
    usersOnPage: 5,
    currentPage: 1,
@@ -47,7 +48,7 @@ const usersReducer = (state = intialState, action: Actions): InitialState => {
             ...state,
             followInProgress: action.followInProgress
                ? [...state.followInProgress, action.userId]
-               : state.followInProgress.filter((id: number) => id != action.userId)
+               : state.followInProgress.filter((id: string) => id != action.userId)
          }
       default:
          return state
@@ -55,9 +56,9 @@ const usersReducer = (state = intialState, action: Actions): InitialState => {
 }
 
 // actionCreators 
-const actions = {
-   followSuccessed: (userId: number) => ({ type: 'USERS-REDUCER/FOLLOW', userId } as const),
-   unfollowSuccessed: (userId: number) => ({ type: 'USERS-REDUCER/UNFOLLOW', userId } as const),
+export const actions = {
+   followSuccessed: (userId: string) => ({ type: 'USERS-REDUCER/FOLLOW', userId } as const),
+   unfollowSuccessed: (userId: string) => ({ type: 'USERS-REDUCER/UNFOLLOW', userId } as const),
    setUsers: (users: any) => ({ type: 'USERS-REDUCER/SET_USERS', users } as const),
    setTotalCountUsers: (totalCount: number) => (
       { type: 'USERS-REDUCER/SET_TOTAL_COUNT_USERS', totalCount } as const),
@@ -65,7 +66,7 @@ const actions = {
       { type: 'USERS-REDUCER/SET_CURRENT_PAGE', currentPage } as const),
    toggleIsFetching: (isFetching: boolean) => (
       { type: 'USERS-REDUCER/TOGGLE_IS_FETCHING', isFetching } as const),
-   toggleIsFollowing: (followInProgress: boolean, userId: number) => (
+   toggleIsFollowing: (followInProgress: boolean, userId: string) => (
       { type: 'USERS-REDUCER/TOGGLE_IS_FOLLOWING', followInProgress, userId } as const),
 }
 type Actions = ReturnType<InferValueTypes<typeof actions>>
@@ -84,7 +85,7 @@ export const getUsers = (usersOnPage: number, page: number): Thunk => {
          })
    }
 }
-export const follow = (userId: number): Thunk => {
+export const follow = (userId: string): Thunk => {
    return dispatch => {
       dispatch(actions.toggleIsFollowing(true, userId))
       usersAPI.follow(userId).then(resultCode => {
@@ -95,7 +96,7 @@ export const follow = (userId: number): Thunk => {
       })
    }
 }
-export const unfollow = (userId: number): Thunk => {
+export const unfollow = (userId: string): Thunk => {
    return dispatch => {
       dispatch(actions.toggleIsFollowing(true, userId))
       usersAPI.unfollow(userId).then(resultCode => {
